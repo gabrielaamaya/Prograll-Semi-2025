@@ -57,6 +57,22 @@ public class MainActivity extends AppCompatActivity {
                 if (opt.isChecked()) {
                     respuesta = num1 / num2;
                 }
+                opt = findViewById(R.id.optExponenciacion);
+                if (opt.isChecked()) {
+                    respuesta = Math.pow(num1, num2);
+                }
+                opt = findViewById(R.id.optPorcentaje);
+                if (opt.isChecked()) {
+                    respuesta = (num1 * num2) / 100;
+                }
+                opt = findViewById(R.id.optRaiz);
+                if (opt.isChecked()) {
+                    if (num1 >= 0);
+                }
+                opt = findViewById(R.id.optFactorial);
+                if (opt.isChecked()) {
+                    if (num1 >= 0 && num1 == (int) num1);
+                }
 
                 tempVal= findViewById(R.id.lblRespuesta);
                 tempVal.setText("Respuesta: "+ respuesta);
