@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">MyprimeraAplicacion</string>
-    <string name ="hola">Hola Mundo</string>
+    <string name="app_name">miPrimeraAplicacion</string>
+    <string-array name="opciones">
+        <item>Suma</item>
+        <item>Resta</item>
+        <item>Multiplicacion</item>
+        <item>Division</item>
+    </string-array>
 </resources>
