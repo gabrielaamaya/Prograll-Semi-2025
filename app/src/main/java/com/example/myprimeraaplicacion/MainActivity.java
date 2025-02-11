@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         spnA = findViewById(R.id.spnALongitud);
                         msg = "Conversión de longitud ";
                         break;
-                    case 2: // Ti.empo
+                    case 2: // Tiempo
                         spnDe = findViewById(R.id.spnDeTiempo);
                         spnA = findViewById(R.id.spnATiempo);
                         msg = "Conversión de tiempo ";
