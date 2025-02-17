@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         reproductorMusica();
 
     }
-
     void reproductorMusica(){
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audio);
         mediaPlayer.start();
     }
 
 }
+
