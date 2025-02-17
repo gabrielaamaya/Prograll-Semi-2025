@@ -61,26 +61,21 @@ public class MainActivity extends AppCompatActivity {
         sensorManager.unregisterListener(sensorEventListener);
     }
     private void sensorLuz(){
-        temVal = findViewById(R.id.lblSensorProximidad);
+        temVal = findViewById(R.id.lblSensorAcelerometro);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if(sensor==null ){
-            temVal.setText("Tu dispositivo, NO tiene el sensor de PROXIMIDAD");
+            temVal.setText("Tu dispositivo, NO tiene el sensor de ACELEROMETRO");
             finish();
         }
         sensorEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                double valor = event.values[0];
-                temVal.setText("Proximidad: "+ valor);
+                double x = event.values[0];
+                double y = event.values[1];
+                double z = event.values[2];
+                temVal.setText("Desplazamiento X: "+ x +"; Y: "+ y +"; Z= " + z);
 
-                if(valor<=4){
-                    getWindow().getDecorView().setBackgroundColor(Color.BLACK);
-                }else if(valor<=8){
-                    getWindow().getDecorView().setBackgroundColor(Color.GRAY);
-                }else {
-                    getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-                }
             }
 
 
