@@ -36,19 +36,51 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     TextView tempVal;
-    LocationManager locationManager;
-    LocationListener locationListener;
+    Button btn;
+    MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tempVal = findViewById(R.id.lblreproductor_musica);
-        reproductorMusica();
-
+        tempVal = findViewById(R.id.lblReproductorMusica);
+        reproductorMusca();
+        btn = findViewById(R.id.btnIniciar);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iniciar();
+            }
+        });
+        btn = findViewById(R.id.btnPausar);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pausar();
+            }
+        });
+        btn = findViewById(R.id.btnParar);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                detener();
+            }
+        });
     }
-    void reproductorMusica(){
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.audio);
+    void reproductorMusca(){
+        mediaPlayer = MediaPlayer.create(this, R.raw.audio);
+    }
+    void iniciar(){
         mediaPlayer.start();
+        tempVal.setText("Reproduciendo...");
+    }
+    void pausar(){
+        mediaPlayer.pause();
+        tempVal.setText("Pausado...");
+    }
+    void detener(){
+        mediaPlayer.stop();
+        tempVal.setText("Detenido...");
+        reproductorMusca();
     }
 
 }
