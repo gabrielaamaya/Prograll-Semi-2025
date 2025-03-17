@@ -1,6 +1,7 @@
 package com.example.myprimeraaplicacion;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -45,52 +46,71 @@ public class lista_amigos extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_amigos);
-
         parametros.putString("accion", "nuevo");
         db = new DB(this);
-
         fab = findViewById(R.id.fabAgregarAmigo);
         fab.setOnClickListener(view -> abriVentana());
         obtenerDatosAmigos();
         buscarAmigos();
     }
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.minenu, menu);
+        inflater.inflate(R.menu.mimenu, menu);
         try {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
             posicion = info.position;
             menu.setHeaderTitle(jsonArray.getJSONObject(posicion).getString("nombre"));
-        }catch (Exception e) {
+        } catch (Exception e) {
             mostrarMsg("Error: " + e.getMessage());
         }
     }
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         try{
-            if (item.getItemId()==R.id.mnxNuevo){
+            if( item.getItemId()==R.id.mnxNuevo){
                 abriVentana();
-
-            }else if (item.getItemId()==R.id.mnxModificar){
+            }else if( item.getItemId()==R.id.mnxModificar){
                 parametros.putString("accion", "modificar");
                 parametros.putString("amigos", jsonArray.getJSONObject(posicion).toString());
                 abriVentana();
-
-            }else if (item.getItemId()==R.id.mnxEliminar){
-                //Eliminar amigo
-
+            } else if (item.getItemId()==R.id.mnxEliminar) {
+                eliminarAmigo();
             }
             return true;
-
         }catch (Exception e){
-            mostrarMsg("Error:"+ e.getMessage());
+            mostrarMsg("Error: " + e.getMessage());
+            return super.onContextItemSelected(item);
         }
-        return super.onContextItemSelected(item);
     }
-
+    private void eliminarAmigo(){
+        try{
+            String nombre = jsonArray.getJSONObject(posicion).getString("nombre");
+            AlertDialog.Builder confirmacion = new AlertDialog.Builder(this);
+            confirmacion.setTitle("Esta seguro de eliminar a: ");
+            confirmacion.setMessage(nombre);
+            confirmacion.setPositiveButton("Si", (dialog, which) -> {
+                try {
+                    String respuesta = db.administrar_amigos("eliminar", new String[]{jsonArray.getJSONObject(posicion).getString("idAmigo")});
+                    if(respuesta.equals("ok")) {
+                        obtenerDatosAmigos();
+                        mostrarMsg("Registro eliminado con exito");
+                    }else{
+                        mostrarMsg("Error: " + respuesta);
+                    }
+                }catch (Exception e){
+                    mostrarMsg("Error: " + e.getMessage());
+                }
+            });
+            confirmacion.setNegativeButton("No", (dialog, which) -> {
+                dialog.dismiss();
+            });
+            confirmacion.create().show();
+        }catch (Exception e){
+            mostrarMsg("Error: " + e.getMessage());
+        }
+    }
     private void abriVentana(){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtras(parametros);
@@ -127,7 +147,6 @@ public class lista_amigos extends Activity {
                 ltsAmigos = findViewById(R.id.ltsAmigos);
                 alAmigos.clear();
                 alAmigosCopia.clear();
-
                 for (int i=0; i<jsonArray.length(); i++){
                     jsonObject = jsonArray.getJSONObject(i);
                     misAmigos = new amigos(
@@ -157,7 +176,6 @@ public class lista_amigos extends Activity {
         tempVal.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -178,7 +196,6 @@ public class lista_amigos extends Activity {
             }
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
     }

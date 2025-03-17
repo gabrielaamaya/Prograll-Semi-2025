@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 public class DB extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "amigos";
     private static final int DATABASE_VERSION = 1;
@@ -12,7 +11,6 @@ public class DB extends SQLiteOpenHelper {
     public DB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQLdb);
@@ -26,7 +24,7 @@ public class DB extends SQLiteOpenHelper {
             SQLiteDatabase db = getWritableDatabase();
             String mensaje = "ok", sql = "";
             switch (accion) {
-                case "agregar":
+                case "nuevo":
                     sql = "INSERT INTO amigos (nombre, direccion, telefono, email, dui, urlFoto) VALUES ('"+ datos[1] +"', '" + datos[2] + "', '" + datos[3] + "', '" + datos[4] + "', '" + datos[5] + "', '" + datos[6] + "')";
                     break;
                 case "modificar":
