@@ -48,7 +48,7 @@ public class lista_amigos extends Activity {
         setContentView(R.layout.activity_lista_amigos);
         parametros.putString("accion", "nuevo");
         db = new DB(this);
-        fab = findViewById(R.id.fabAgregarAmigo);
+        fab = findViewById(R.id.fabagregarAmigo);
         fab.setOnClickListener(view -> abriVentana());
         obtenerDatosAmigos();
         buscarAmigos();
@@ -57,7 +57,7 @@ public class lista_amigos extends Activity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mimenu, menu);
+        inflater.inflate(R.menu.minenu, menu);
         try {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
             posicion = info.position;
@@ -144,7 +144,7 @@ public class lista_amigos extends Activity {
     private void mostrarDatosAmigos(){
         try{
             if(jsonArray.length()>0){
-                ltsAmigos = findViewById(R.id.ltsAmigos);
+                View lista_amigos = findViewById(R.id.listaamigos);
                 alAmigos.clear();
                 alAmigosCopia.clear();
                 for (int i=0; i<jsonArray.length(); i++){

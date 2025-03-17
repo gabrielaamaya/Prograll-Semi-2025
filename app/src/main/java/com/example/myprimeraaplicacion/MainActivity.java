@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         db = new DB(this);
         btn = findViewById(R.id.btnGuardarAmigo);
         btn.setOnClickListener(view->guardarAmigo());
-        fab = findViewById(R.id.fabListaAmigos);
+        fab = findViewById(R.id.fablistaamigos);
         fab.setOnClickListener(view->abrirVentana());
         mostrarDatos();
     }
