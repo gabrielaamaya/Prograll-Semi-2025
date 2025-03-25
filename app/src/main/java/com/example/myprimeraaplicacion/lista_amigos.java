@@ -16,12 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -42,6 +37,8 @@ public class lista_amigos extends Activity {
     amigos misAmigos;
     FloatingActionButton fab;
     int posicion = 0;
+    obtenerDatosServidor datosServidor;
+    detectarInternet di;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +47,7 @@ public class lista_amigos extends Activity {
         db = new DB(this);
         fab = findViewById(R.id.fabagregarAmigo);
         fab.setOnClickListener(view -> abriVentana());
-        obtenerDatosAmigos();
+        listarDatos();
         buscarAmigos();
     }
     @Override
@@ -116,6 +113,23 @@ public class lista_amigos extends Activity {
         intent.putExtras(parametros);
         startActivity(intent);
     }
+
+    private void listarDatos(){
+        try {
+            di = new detectarInternet(this);
+            if(di.hayConexionInternet()){
+                datosServidor = new obtenerDatosServidor();
+                String respuesta = datosServidor.execute().get();
+                jsonObject = new JSONObject(respuesta);
+                jsonArray = jsonObject.getJSONArray("rows");
+                mostrarDatosAmigos();
+            }else{//offline
+                obtenerDatosAmigos();
+            }
+        }catch (Exception e){
+            mostrarMsg("Error: " + e.getMessage());
+        }
+    }
     private void obtenerDatosAmigos(){
         try{
             cAmigos = db.lista_amigos();
@@ -147,8 +161,9 @@ public class lista_amigos extends Activity {
                 View lista_amigos = findViewById(R.id.listaamigos);
                 alAmigos.clear();
                 alAmigosCopia.clear();
+
                 for (int i=0; i<jsonArray.length(); i++){
-                    jsonObject = jsonArray.getJSONObject(i);
+                    jsonObject = jsonArray.getJSONObject(i).getJSONObject("value");
                     misAmigos = new amigos(
                             jsonObject.getString("idAmigo"),
                             jsonObject.getString("nombre"),
