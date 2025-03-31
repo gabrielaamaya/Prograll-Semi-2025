@@ -10,13 +10,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class obtenerDatosServidor extends AsyncTask<String, String, String> {
-   HttpURLConnection httpURLConnection;
-
+    HttpURLConnection httpURLConnection;
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
     }
-
     @Override
     protected String doInBackground(String... parametros) {
         StringBuilder respuesta = new StringBuilder();
@@ -30,7 +28,7 @@ public class obtenerDatosServidor extends AsyncTask<String, String, String> {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             String linea;
-            while ((linea = bufferedReader.readLine()) != null){
+            while((linea = bufferedReader.readLine()) != null){
                 respuesta.append(linea);
             }
         }catch (Exception e){
@@ -42,4 +40,3 @@ public class obtenerDatosServidor extends AsyncTask<String, String, String> {
         return respuesta.toString();
     }
 }
-
