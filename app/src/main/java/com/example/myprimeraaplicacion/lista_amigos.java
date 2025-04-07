@@ -88,6 +88,7 @@ public class lista_amigos extends Activity {
         }
     }
 
+
     private void eliminarAmigo() {
         try {
             String nombre = jsonArray.getJSONObject(posicion).getJSONObject("value").getString("nombre");
