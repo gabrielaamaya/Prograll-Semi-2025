@@ -303,10 +303,10 @@ public class lista_productos extends Activity {
                             jsonObject.getString("marca"),
                             jsonObject.getString("presentacion"),
                             jsonObject.getString("precio"),
+                            jsonObject.optString("costo", "0"), // Nuevo campo costo (con valor por defecto "0" si no existe)
                             jsonObject.getString("foto"),
                             jsonObject.getString("foto1"),
                             jsonObject.getString("foto2")
-
                     );
                     alproductos.add(misProductos);
 
