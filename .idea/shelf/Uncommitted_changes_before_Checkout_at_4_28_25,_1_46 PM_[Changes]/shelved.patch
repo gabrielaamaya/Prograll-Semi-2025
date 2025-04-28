@@ -1,0 +1,38 @@
+Index: app/src/main/java/com/example/myprimeraaplicacion/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myprimeraaplicacion;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.EditText;\nimport android.widget.RadioButton;\nimport android.widget.RadioGroup;\nimport android.widget.Spinner;\nimport android.widget.TabHost;\nimport android.widget.TextView;\nimport android.widget.Toast;\n\nimport androidx.activity.EdgeToEdge;\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.core.graphics.Insets;\nimport androidx.core.view.ViewCompat;\nimport androidx.core.view.WindowInsetsCompat;\n\nimport com.example.myprimeraaplicacion.R;\nimport com.google.android.material.floatingactionbutton.FloatingActionButton;\n\nimport org.json.JSONObject;\nimport org.w3c.dom.Text;\npublic class MainActivity extends AppCompatActivity {\n    FloatingActionButton fab;\n    Button btn;\n    TextView tempVal;\n    DB db;\n    String accion = \"nuevo\", idAmigo = \"\";\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n        db = new DB(this);\n        btn = findViewById(R.id.btnGuardarAmigo);\n        btn.setOnClickListener(view->guardarAmigo());\n        fab = findViewById(R.id.fablistaamigos);\n        fab.setOnClickListener(view->abrirVentana());\n        mostrarDatos();\n    }\n    private void mostrarDatos(){\n        try {\n            Bundle parametros = getIntent().getExtras();\n            accion = parametros.getString(\"accion\");\n            if (accion.equals(\"modificar\")) {\n                JSONObject datos = new JSONObject(parametros.getString(\"amigos\"));\n                idAmigo = datos.getString(\"idAmigo\");\n                tempVal = findViewById(R.id.txtNombre);\n                tempVal.setText(datos.getString(\"nombre\"));\n                tempVal = findViewById(R.id.txtDireccion);\n                tempVal.setText(datos.getString(\"direccion\"));\n                tempVal = findViewById(R.id.txtTelefono);\n                tempVal.setText(datos.getString(\"telefono\"));\n                tempVal = findViewById(R.id.txtEmail);\n                tempVal.setText(datos.getString(\"email\"));\n                tempVal = findViewById(R.id.txtDui);\n                tempVal.setText(datos.getString(\"dui\"));\n            }\n        }catch (Exception e){\n            mostrarMsg(\"Error: \"+e.getMessage());\n        }\n    }\n    private void mostrarMsg(String msg){\n        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();\n    }\n    private void abrirVentana(){\n        Intent intent = new Intent(this, lista_amigos.class);\n        startActivity(intent);\n    }\n    private void guardarAmigo() {\n        tempVal = findViewById(R.id.txtNombre);\n        String nombre = tempVal.getText().toString();\n        tempVal = findViewById(R.id.txtDireccion);\n        String direccion = tempVal.getText().toString();\n        tempVal = findViewById(R.id.txtTelefono);\n        String telefono = tempVal.getText().toString();\n        tempVal = findViewById(R.id.txtEmail);\n        String email = tempVal.getText().toString();\n        tempVal = findViewById(R.id.txtDui);\n        String dui = tempVal.getText().toString();\n\n        String[] datos = {idAmigo, nombre, direccion, telefono, email, dui, \"\"};\n        db.administrar_amigos(accion, datos);\n        Toast.makeText(getApplicationContext(), \"Registro guardado con exito.\", Toast.LENGTH_LONG).show();\n        abrirVentana();\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myprimeraaplicacion/MainActivity.java b/app/src/main/java/com/example/myprimeraaplicacion/MainActivity.java
+--- a/app/src/main/java/com/example/myprimeraaplicacion/MainActivity.java	(revision 24d2ae7cfd515cf0bffd7dcec87a035a12554fec)
++++ b/app/src/main/java/com/example/myprimeraaplicacion/MainActivity.java	(date 1745846843703)
+@@ -37,7 +37,7 @@
+         db = new DB(this);
+         btn = findViewById(R.id.btnGuardarAmigo);
+         btn.setOnClickListener(view->guardarAmigo());
+-        fab = findViewById(R.id.fablistaamigos);
++        fab = findViewById(R.id.fabListaAmigos);
+         fab.setOnClickListener(view->abrirVentana());
+         mostrarDatos();
+     }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"jbr-21\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 24d2ae7cfd515cf0bffd7dcec87a035a12554fec)
++++ b/.idea/misc.xml	(date 1745846564107)
+@@ -1,6 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
