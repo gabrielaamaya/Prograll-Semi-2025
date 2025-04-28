@@ -20,10 +20,10 @@ public class AgregarProducto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.agregar_producto);
+        setContentView(R.layout.AgregarProducto);
 
         etNombre = findViewById(R.id.etNombre);
-        etPrecio = findViewById(R.id.etPrecio);
+        etPrecio = findViewById(R.id.etprecio);
         etCosto = findViewById(R.id.etCosto);
         tvGanancia = findViewById(R.id.tvGanancia);
         btnGuardar = findViewById(R.id.btnGuardar);
