@@ -35,7 +35,6 @@ public class AgregarProducto extends AppCompatActivity {
             }
         });
     }
-
     private void guardarProducto() {
         String nombre = etNombre.getText().toString();
         String precioStr = etPrecio.getText().toString();
