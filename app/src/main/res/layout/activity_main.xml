@@ -9,6 +9,7 @@
     android:background="@color/fondo"
     tools:context=".MainActivity">
 
+    <!-- Código -->
     <TextView
         android:id="@+id/lblCod"
         android:layout_marginStart="20dp"
@@ -30,6 +31,7 @@
         android:textColor="@color/textoBase"
         android:textColorHint="@color/textoBase" />
 
+    <!-- Descripción -->
     <TextView
         android:id="@+id/lblDescripcion"
         android:layout_marginStart="20dp"
@@ -52,7 +54,7 @@
         android:textColor="@color/textoBase"
         android:textColorHint="@color/textoBase" />
 
-    <!-- Nuevo campo: Costo -->
+    <!-- Costo -->
     <TextView
         android:id="@+id/lblCosto"
         android:layout_marginStart="20dp"
@@ -76,6 +78,7 @@
         android:textColor="@color/textoBase"
         android:textColorHint="@color/textoBase" />
 
+    <!-- Precio -->
     <TextView
         android:id="@+id/lblPrecio"
         android:layout_marginStart="20dp"
@@ -99,7 +102,7 @@
         android:textColor="@color/textoBase"
         android:textColorHint="@color/textoBase" />
 
-
+    <!-- Ganancia -->
     <TextView
         android:id="@+id/lblGanancia"
         android:layout_marginStart="20dp"
@@ -122,7 +125,30 @@
         android:textColor="@color/textoBase"
         android:background="@android:color/transparent" />
 
+    <!-- Presentación -->
+    <TextView
+        android:id="@+id/lblPresentacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="114dp"
+        android:layout_toEndOf="@+id/lblCod"
+        android:text="Presentacion"
+        android:textColor="@color/textoEncabezado"
+        android:textSize="15sp" />
 
+    <EditText
+        android:id="@+id/txtPresentacion"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPresentacion"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/txtCodigo"
+        android:hint="Botella"
+        android:textColor="@color/textoBase"
+        android:textColorHint="@color/textoBase" />
+
+    <!-- Marca -->
     <TextView
         android:id="@+id/lblMarca"
         android:layout_width="wrap_content"
@@ -147,28 +173,33 @@
         android:textColor="@color/textoBase"
         android:textColorHint="@color/textoBase" />
 
-    <EditText
-        android:id="@+id/txtPresentacion"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblPresentacion"
-        android:layout_marginStart="8dp"
-        android:layout_marginRight="20dp"
-        android:layout_toEndOf="@+id/txtCodigo"
-        android:hint="Botella"
-        android:textColor="@color/textoBase"
-        android:textColorHint="@color/textoBase" />
-
+    <!-- Stock -->
     <TextView
-        android:id="@+id/lblPresentacion"
+        android:id="@+id/lblStock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="114dp"
-        android:layout_toEndOf="@+id/lblCod"
-        android:text="Presentacion"
+        android:layout_below="@+id/txtMarca"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/lblDescripcion"
+        android:text="Stock"
         android:textColor="@color/textoEncabezado"
         android:textSize="15sp" />
 
+    <EditText
+        android:id="@+id/txtStock"
+        android:layout_width="133dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblStock"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/txtDescripcion"
+        android:hint="50"
+        android:inputType="number"
+        android:textColor="@color/textoBase"
+        android:textColorHint="@color/textoBase" />
+
+    <!-- Imagen -->
     <ImageButton
         android:id="@+id/imgFotoProducto"
         android:layout_width="100dp"
@@ -178,6 +209,7 @@
         android:layout_centerHorizontal="true"
         android:src="@mipmap/ic_launcher_round" />
 
+    <!-- Botones de navegación -->
     <Button
         android:id="@+id/btnAtras"
         android:layout_width="110dp"
@@ -206,6 +238,7 @@
         android:textAlignment="center"
         android:textColor="@color/textoEncabezado" />
 
+    <!-- Botón guardar -->
     <Button
         android:id="@+id/btnGuardarProducto"
         android:layout_width="200dp"
@@ -215,6 +248,7 @@
         android:layout_marginTop="45dp"
         android:text="Guardar Producto" />
 
+    <!-- Botón flotante -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabListaProductos"
         android:src="@android:drawable/ic_menu_revert"
@@ -223,4 +257,5 @@
         android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
 </RelativeLayout>
