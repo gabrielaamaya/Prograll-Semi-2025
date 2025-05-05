@@ -10,13 +10,13 @@ import java.util.concurrent.CompletableFuture;
 
 public class Token {
     public String obtenerToken(){
-        CompletableFuture<String> tarea = new CompletableFuture<>();
+        CompletableFuture<String> tarea = new CompletableFuture<>()
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
             @Override
             public void onComplete(@NonNull Task<String> task) {
                 if( task.isSuccessful() ){
                     String token = task.getResult();
-                    tarea.complete(token);
+                    tarea.complete(Token);
                 }else{
                     tarea.completeExceptionally(task.getException());
                 }

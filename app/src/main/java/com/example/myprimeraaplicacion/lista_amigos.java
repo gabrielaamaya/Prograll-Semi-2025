@@ -46,7 +46,7 @@ public class lista_amigos extends Activity {
         setContentView(R.layout.activity_lista_amigos);
         parametros.putString("accion", "nuevo");
         db = new DB(this);
-        fab = findViewById(R.id.fabAgregarAmigo);
+        fab = findViewById(R.id.fabagregarAmigo);
         fab.setOnClickListener(view -> abriVentana());
         listarDatos();
         buscarAmigos();
