@@ -74,4 +74,5 @@ public class AjustesActivity extends AppCompatActivity {
         switchChats.setChecked(prefs.getBoolean("Chats", false));
         switchIdioma.setChecked(prefs.getBoolean("Idioma", true)); // predeterminado: español activado
     }
+
 }
