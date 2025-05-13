@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void subirFotoFirestore(){
         mostrarMsg("Subiendo foto a firestore");
-        StorageReference reference = FirebaseStorage.getInstance().getReference();
+        Storagereference reference = FirebaseStorage.getInstance().getReference();
         Uri file = Uri.fromFile(new File(urlCompletaFoto));
         final StorageReference fileRef = reference.child("fotosAmigos/"+file.getLastPathSegment());
 

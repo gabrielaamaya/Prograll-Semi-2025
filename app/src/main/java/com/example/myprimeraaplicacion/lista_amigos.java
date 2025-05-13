@@ -29,10 +29,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
+
+
+
 public class lista_amigos extends Activity {
     Bundle parametros = new Bundle();
     ListView ltsAmigos;
@@ -55,7 +57,7 @@ public class lista_amigos extends Activity {
 
         parametros.putString("accion", "nuevo");
 
-        fab = findViewById(R.id.fabAgregarAmigo);
+        fab = findViewById(R.id.fabagregarAmigo);
         fab.setOnClickListener(view -> abriVentana());
         listarDatos();
         buscarAmigos();
@@ -181,6 +183,7 @@ public class lista_amigos extends Activity {
                             jsonObject.put("email", amigo.getEmail());
                             jsonObject.put("dui", amigo.getDui());
                             jsonObject.put("urlFoto", amigo.getFoto());
+                            jsonObject.put("UrlCompletaFotoFirestore", amigo.getUrlCompletaFotoFirestore());
                             jsonObject.put("miToken", amigo.getMiToken());
 
                             jsonArray.put(jsonObject);
