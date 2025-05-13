@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "207053564794",
+    "firebase_url": "https://prograii-2025-9d6b7-default-rtdb.firebaseio.com",
+    "project_id": "prograii-2025-9d6b7",
+    "storage_bucket": "prograii-2025-9d6b7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207053564794:android:ccd11e88fa75d729e804c3",
+        "android_client_info": {
+          "package_name": "example.myprimeraaplicacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALBdj4lX_WDd1Fgl_fLuEw416pWE3KowQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

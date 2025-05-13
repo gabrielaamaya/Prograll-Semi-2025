@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     String urlCompletaFoto = "", getUrlCompletaFotoFirestore = "";
     Intent tomarFotoIntent;
     detectarInternet di;
-    DatabaseReference databaseReference;
+    Databasereference databaseReference;
     String miToken = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
