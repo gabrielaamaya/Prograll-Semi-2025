@@ -41,8 +41,8 @@ public class chatsArrayAdapter extends ArrayAdapter {
 
             LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             if( objChatMessage.posicion ){
-                fila = layoutInflater.inflate(R.layout.msgizquierda, viewGroup, false);
-                chatText = fila.findViewById(R.id.lblMsgIzquierda);
+                fila = layoutInflater.inflate(R.layout.mgsizquierda, viewGroup, false);
+                chatText = fila.findViewById(R.id.lblmsgizquierda);
             }else{
                 fila = layoutInflater.inflate(R.layout.mgsderecha, viewGroup, false);
                 chatText = fila.findViewById(R.id.lblMsgDerecha);

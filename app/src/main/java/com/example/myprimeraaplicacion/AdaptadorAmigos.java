@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ugb.MiPrimeraAplicacion.R;
+
 import java.util.ArrayList;
 
 public class AdaptadorAmigos extends BaseAdapter {
@@ -20,6 +22,8 @@ public class AdaptadorAmigos extends BaseAdapter {
     ArrayList<amigos> alAmigos;
     amigos misAmigos;
     LayoutInflater inflater;
+    private boolean fotos;
+
     public AdaptadorAmigos(Context context, ArrayList<amigos> alAmigos) {
         this.context = context;
         this.alAmigos = alAmigos;
@@ -39,7 +43,7 @@ public class AdaptadorAmigos extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = inflater.inflate(R.layout.fotos, parent, false);
+        View itemView = inflater.inflate(R.layout fotos, parent, false);
         try {
             misAmigos = alAmigos.get(position);
             TextView tempVal = itemView.findViewById(R.id.lblNombreAdaptador);
