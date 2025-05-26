@@ -91,7 +91,7 @@ public class chats extends Activity {
     }
     private void sendChatMessage(Boolean posicion, String msg){
         try{
-            chatArrayAdapter.add(new chatMessage(posicion, msg));
+            chatArrayAdapter.add(new ChatMessage(posicion, msg));
             tempVal.setText("");
         }catch (Exception e){
             mostrarMsg("Error al posicional el msg: "+ e.getMessage());
@@ -173,3 +173,5 @@ public class chats extends Activity {
         }
     }
 }
+
+
