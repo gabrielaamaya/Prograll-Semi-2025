@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ugb.MiPrimeraAplicacion.R;
+import com.example.myprimeraaplicacion.R;
 
 import java.util.ArrayList;
 

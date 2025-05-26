@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class chatsArrayAdapter extends ArrayAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             if( objChatMessage.posicion ){
                 fila = layoutInflater.inflate(R.layout.mgsizquierda, viewGroup, false);
-                chatText = fila.findViewById(R.id.lblmsgizquierda);
+                chatText = fila.findViewById(R.id.lblMsgIzquierda);
             }else{
                 fila = layoutInflater.inflate(R.layout.mgsderecha, viewGroup, false);
                 chatText = fila.findViewById(R.id.lblMsgDerecha);
@@ -54,5 +53,3 @@ public class chatsArrayAdapter extends ArrayAdapter {
         return fila;
     }
 }
-
-

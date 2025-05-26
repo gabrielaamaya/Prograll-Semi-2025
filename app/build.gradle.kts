@@ -3,10 +3,10 @@ plugins {
     id("com.google.gms.google-services")
 }
 android {
-    namespace = "com.ugb.MiPrimeraAplicacion"
+    namespace = "com.example.myprimeraaplicacion"
     compileSdk = 35
     defaultConfig {
-        applicationId = "com.ugb.MiPrimeraAplicacion"
+        applicationId = "com.example.myprimeraaplicacion"
         minSdk = 23
         targetSdk = 35
         versionCode = 1
@@ -27,7 +27,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
-
 dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -43,5 +42,3 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")
     implementation("com.firebaseui:firebase-ui-storage:9.0.0")
 }
-
-
