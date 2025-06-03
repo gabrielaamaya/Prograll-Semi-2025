@@ -20,7 +20,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "MyAndroidFCMservice";
-    private static final String ADMIN_CHANNEL_ID = "";
+    private static final String ADMIN_CHANNEL_ID = "gaby";
     public static final String DISPLAY_MESSAGE_ACTION = "enviarMsg";
     NotificationManager notificationManager;
 

@@ -91,7 +91,7 @@ public class chats extends Activity {
             enviarMsg();
             ltsChats = findViewById(R.id.ltsChats);
 
-            chatArrayAdapter = new chatsArrayAdapter(getApplicationContext(), R.layout.msgizquierda);
+            chatArrayAdapter = new chatsArrayAdapter(getApplicationContext(), R.layout.mgsizquierda);
             ltsChats.setAdapter(chatArrayAdapter);
             historialMsg();
         }catch (Exception e){
@@ -123,7 +123,7 @@ public class chats extends Activity {
             enviarDatos objEviar = new enviarDatos();
             objEviar.execute(misDatos.toString());
             //guardart en firebase
-            chats_mensajes chatsMsg = new chats_mensajes(from, msg, to, to+"_"+from);
+            Chats_mensajes chatsMsg = new Chats_mensajes(from, msg, to, to+"_"+from);
             String key = databaseReference.push().getKey();
             databaseReference.child(key).setValue(chatsMsg);
         }catch (Exception e){
@@ -132,7 +132,7 @@ public class chats extends Activity {
     }
     private void sendChatMessage(Boolean posicion, String msg){
         try{
-            chatArrayAdapter.add(new chatMessage(posicion, msg));
+            chatArrayAdapter.add(new ChatMessage(posicion, msg));
             txtMsg.setText("");
         }catch (Exception e){
             mostrarMsg("Error al posicional el msg: "+ e.getMessage());
@@ -192,7 +192,7 @@ public class chats extends Activity {
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setRequestProperty("Content-Type", "application/json");
                 urlConnection.setRequestProperty("Accept", "application/json");
-                urlConnection.setRequestProperty("Authorization", "key=BI8BanTAjfy-2d28jD3K4x4fhXV7qVuo8I-cWQxb0q5W-35JLEeO1nV6UcaPAN8XdsrMsSJffRU_6lqFhBlrxx0");
+                urlConnection.setRequestProperty("Authorization", "key=BN9A1LPI5QzJsYHXmnZwwwKtVjbfLCHI5pKGOl2zniCioqnDEhaaCgVHuCO0_m2OXLN4X_thR9pS_0ooxo-t2c4");
 
                 //set headers and method
                 Writer writer = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream(), "UTF-8"));
